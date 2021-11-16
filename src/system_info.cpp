@@ -19,7 +19,7 @@ namespace system_info
             std::cerr << "/etc/os-release does not release, did you install your linux distro correctly?" << std::endl;
         }
 
-        return "test";
+        return SYSTEM_RELEASE_PATH;
     }
 
     std::string system_os(std::string info_file) {
