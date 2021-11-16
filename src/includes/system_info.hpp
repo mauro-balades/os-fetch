@@ -5,12 +5,19 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
+
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
-#include <filesystem>
 
-#include "system_info.hpp"
+#include <filesystem>
+#include <chrono>
+#include <thread>
+
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <unistd.h>
+
 
 #define SYSTEM_RELEASE_PATH "/etc/os-release"
 
