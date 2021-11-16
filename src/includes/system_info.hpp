@@ -16,8 +16,8 @@
 
 namespace system_info
 {
-    std::string system_info_path();
-    std::string system_os(std::string info_file);
+    void system_info_path_check();
+    std::string system_os();
 };
 
 #endif /* __OS_FETCH_SYSTEM_INFO_H__ */
