@@ -16,10 +16,21 @@
 
 namespace utils
 {
-    void print_os_fetch_header();
     void print_half_line();
 };
 
+namespace header
+{
+    extern std::string header1;
+    extern std::string header2;
+    extern std::string header3;
+    extern std::string header4;
+    extern std::string header5;
+    extern std::string header6;
+    extern std::string header7;
+}
+
+// TODO
 namespace colors
 {
 

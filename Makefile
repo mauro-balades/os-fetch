@@ -2,7 +2,7 @@
 
 CC := g++
 INCLUDES := src/includes
-CCFLAGS := -I$(INCLUDES) -std=c++17 -lstdc++fs 
+CCFLAGS := -I$(INCLUDES) -std=c++17 -lstdc++fs -Wall
 DBGFLAGS := -g
 CCOBJFLAGS := $(CCFLAGS) -c
 

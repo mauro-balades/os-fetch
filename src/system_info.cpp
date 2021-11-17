@@ -6,8 +6,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <filesystem>
+#include <limits.h>
 
-#include "system_info.hpp"
 #include "system_info.hpp"
 
 #define SYSTEM_RELEASE_PATH "/etc/os-release"
@@ -52,4 +52,42 @@ namespace system_info
 
         return line;
     }
+
+    std::string system_name_at_hostname() {
+        char *hostname;
+        char *name;
+        char host_temp[HOST_NAME_MAX+1];
+        char name_temp[HOST_NAME_MAX+1];
+
+        if (gethostname(host_temp,HOST_NAME_MAX+1) == -1)
+        {
+            std::cerr << "gethostname error";
+            exit(1);
+        }
+        // ensure that NUL is at the end of the string
+        host_temp[(HOST_NAME_MAX+1)-1] = '\0';
+
+        if (getlogin_r(name_temp,HOST_NAME_MAX+1) == -1)
+        {
+            std::cerr << "gethostname error";
+            exit(1);
+        }
+        // ensure that NUL is at the end of the string
+        name_temp[(HOST_NAME_MAX+1)-1] = '\0';
+        host_temp[(HOST_NAME_MAX+1)-1] = '\0';
+
+        hostname = host_temp;
+        name = name_temp;
+
+        std::string res_name = name;
+        std::string res_host = hostname;
+        std::string at = "@";
+
+        return res_name + at + res_host;
+    }
+};
+
+namespace sections
+{
+    std::string system_os_section = "OS:  \t";
 };
