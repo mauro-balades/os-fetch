@@ -27,6 +27,7 @@ namespace system_info
     void system_info_path_check();
     std::string system_os();
     std::string system_name_at_hostname();
+    std::string system_hostname_line();
 };
 
 namespace sections

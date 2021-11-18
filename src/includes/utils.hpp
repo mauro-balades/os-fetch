@@ -3,20 +3,25 @@
 #define __OS_FETCH_SYSTEM_UTILS_H__
 
 #include <string>
+
 #include <sstream>
 #include <cstdlib>
 #include <iostream>
+
 #include <cstdlib>
 #include <fstream>
 #include <filesystem>
+
 #include <chrono>
 #include <thread>
+#include <cstddef>
 
 #define SYSTEM_RELEASE_PATH "/etc/os-release"
 
 namespace utils
 {
     void print_half_line();
+    std::string repeat(std::string str, const std::size_t n);
 };
 
 namespace header

@@ -9,6 +9,7 @@
 #include <limits.h>
 
 #include "system_info.hpp"
+#include "utils.hpp"
 
 #define SYSTEM_RELEASE_PATH "/etc/os-release"
 #define SYSTEM_RELEASE_DECL "PRETTY_NAME" // PRETTY_NAME="..."
@@ -69,7 +70,7 @@ namespace system_info
 
         if (getlogin_r(name_temp,HOST_NAME_MAX+1) == -1)
         {
-            std::cerr << "gethostname error";
+            std::cerr << "getlogin error";
             exit(1);
         }
         // ensure that NUL is at the end of the string
@@ -85,9 +86,17 @@ namespace system_info
 
         return res_name + at + res_host;
     }
+
+    std::string system_hostname_line() {
+
+        std::string hostname = system_name_at_hostname();
+        size_t l = hostname.length();
+
+        return utils::repeat(std::move("-"), l);
+    }
 };
 
 namespace sections
 {
-    std::string system_os_section = "OS:  \t";
+    std::string system_os_section = "OS: ";
 };
