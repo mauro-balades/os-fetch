@@ -11,9 +11,9 @@ int main() {
     std::this_thread::sleep_for(std::chrono::milliseconds(60));
     std::cout << header::header3 << "   " << sections::system_os_section << system_info::system_os() << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(60));
-    std::cout << header::header4 << std::endl;
+    std::cout << header::header4 << "   " << sections::system_uptime_section << system_info::system_uptime() << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(60));
-    std::cout << header::header5 << std::endl;
+    std::cout << header::header5 << "   " << sections::system_term_section << system_info::system_terminal() << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(60));
     std::cout << header::header6 << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(60));

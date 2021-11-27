@@ -94,9 +94,67 @@ namespace system_info
 
         return utils::repeat(std::move("-"), l);
     }
+
+    std::string system_uptime()
+    {
+        // Code from https://github.com/ameliaprogs/ponyfetch/blob/main/ponyfetch.cpp#L64
+
+        int time;
+        int hours;
+        int hremainder;
+
+        int minutes;
+        int seconds;
+        std::stringstream buffer;
+
+        std::ifstream uptimefile;
+        std::string delimiter = ".";
+        std::string output;
+
+        std::string result;
+
+        uptimefile.open("/proc/uptime", std::ios::in);
+        if(!uptimefile)
+        {
+            std::cerr << "/proc/uptime not found. Are you living in a time machine?" << std::endl;
+        }
+
+        buffer << uptimefile.rdbuf();
+
+        std::string filestring = buffer.str();
+        output = filestring.substr(0, filestring.find(delimiter));
+
+        uptimefile.close();
+        time = stoi(output);
+
+        hours = (int)time / 3600;
+        hremainder = time % 3600;
+
+        minutes = (int)hremainder / 60;
+        seconds = hremainder % 60;
+
+        std::stringstream outputstr;
+        outputstr << hours << " hours " << minutes << " minutes " << seconds << " seconds ";
+        result = outputstr.str();
+
+        return result;
+    }
+
+    std::string system_terminal() {
+        std::stringstream safereturn;
+
+        std::string var = getenv("TERM");
+        safereturn << var;
+
+        std::string res = safereturn.str();
+
+        return res;
+    }
 };
 
 namespace sections
 {
+    std::string system_term_section = "TERM: ";
     std::string system_os_section = "OS: ";
+    std::string system_uptime_section = "UPTIME: ";
 };

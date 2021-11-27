@@ -28,11 +28,15 @@ namespace system_info
     std::string system_os();
     std::string system_name_at_hostname();
     std::string system_hostname_line();
+    std::string system_uptime();
+    std::string system_terminal();
 };
 
 namespace sections
 {
     extern std::string system_os_section;
+    extern std::string system_uptime_section;
+    extern std::string system_term_section;
 };
 
 #endif /* __OS_FETCH_SYSTEM_INFO_H__ */
