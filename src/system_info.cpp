@@ -2,11 +2,14 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
+
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+
 #include <filesystem>
 #include <limits.h>
+#include <sys/utsname.h>
 
 #include "system_info.hpp"
 #include "utils.hpp"
@@ -150,11 +153,27 @@ namespace system_info
 
         return res;
     }
+
+    std::string system_version() {
+      utsname sys_info;
+
+      uname(&sys_info);
+      return sys_info.version;
+    }
+
+    std::string system_machine() {
+      utsname sys_info;
+
+      uname(&sys_info);
+      return sys_info.machine;
+    }
 };
 
 namespace sections
 {
-    std::string system_term_section = "TERM: ";
-    std::string system_os_section = "OS: ";
-    std::string system_uptime_section = "UPTIME: ";
+    std::string system_term_section = "TERM    : "; // I know, this is disgusting
+    std::string system_os_section = "OS      : ";
+    std::string system_uptime_section = "UPTIME  : ";
+    std::string system_version = "VERSION : ";
+    std::string system_machine = "MACHINE : ";
 };

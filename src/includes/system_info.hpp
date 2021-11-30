@@ -30,6 +30,8 @@ namespace system_info
     std::string system_hostname_line();
     std::string system_uptime();
     std::string system_terminal();
+    std::string system_version();
+    std::string system_machine();
 };
 
 namespace sections
@@ -37,6 +39,8 @@ namespace sections
     extern std::string system_os_section;
     extern std::string system_uptime_section;
     extern std::string system_term_section;
+    extern std::string system_version;
+    extern std::string system_machine;
 };
 
 #endif /* __OS_FETCH_SYSTEM_INFO_H__ */
