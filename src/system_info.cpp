@@ -142,11 +142,15 @@ namespace system_info
 
     std::string system_terminal() {
         std::stringstream safereturn;
+        std::string res;
 
         std::string var = getenv("TERM");
         safereturn << var;
 
-        std::string res = safereturn.str();
+        if (var.empty())
+          res = "Not found...";
+        else
+          res = safereturn.str();
 
         return res;
     }
