@@ -148,9 +148,9 @@ namespace system_info
         safereturn << var;
 
         if (var.empty())
-          res << "Not found...";
+          res = "Not found...";
         else
-          res << safereturn.str();
+          res = safereturn.str();
 
         return res;
     }
