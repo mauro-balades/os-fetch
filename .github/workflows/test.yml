@@ -19,13 +19,4 @@ jobs:
       run: make
     - name: Adding object to bin (with sudo)
       run: sudo make install
-    - name: Testing commands
-      run: |
-        echo "------------------------"
-        osfetch -h
-        echo "------------------------"
-        osfetch -n
-        echo "------------------------"
-        osfetch
-        echo "------------------------"
-        osfetch -d 1600
+      
