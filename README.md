@@ -31,6 +31,19 @@ $ sudo make install
 $ osfetch -h
 ```
 
+### Example output
+
+```sh
+$ osfetch
+ _______  _______    _______  _______  _______  _______  __   __    mauro@mauro-...
+|       ||       |  |       ||       ||       ||       ||  | |  |   ------------------
+|   _   ||  _____|  |    ___||    ___||_     _||       ||  |_|  |   OS      : KDE neon User - Plasma 25th Anniversary Edition
+|  | |  || |_____   |   |___ |   |___   |   |  |       ||       |   UPTIME  : 2 hours 5 minutes 7 seconds 
+|  |_|  ||_____  |  |    ___||    ___|  |   |  |      _||       |   TERM    : xterm-256color
+|       | _____| |  |   |    |   |___   |   |  |     |_ |   _   |   VERSION : #45~20.04.1-Ubuntu SMP Wed Nov 10 10:20:10 UTC 2021
+|_______||_______|  |___|    |_______|  |___|  |_______||__| |__|   MACHINE : x86_64
+```
+
 ## Author
 
 👤 **Mauro Baladés**
