@@ -20,7 +20,6 @@
 
 namespace utils
 {
-    void print_half_line();
     std::string repeat(std::string str, const std::size_t n);
 };
 
@@ -35,11 +34,4 @@ namespace header
     extern std::string header7;
 }
 
-// TODO
-namespace colors
-{
-
-};
-
 #endif /* __OS_FETCH_SYSTEM_UTILS_H__ */
-

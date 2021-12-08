@@ -35,14 +35,6 @@ namespace header
 
 namespace utils
 {
-
-    struct winsize get_term_size() {
-        struct winsize w;
-        ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-
-        return w;
-    }
-
     std::string repeat(std::string str, const std::size_t n) {
         if (n == 0) {
             str.clear();
@@ -62,23 +54,4 @@ namespace utils
         str.append(str.c_str(), (n - (m / 2)) * period);
         return str;
     }
-
-    /* ================================================================ PRINTING UTILS */
-
-    void print_half_line() {
-        struct winsize w = utils::get_term_size();
-
-        for (int i = 0; i < w.ws_col; i++) {
-
-            // Used for better output purposes (like an old machine)
-            std::this_thread::sleep_for(std::chrono::milliseconds(15));
-
-            std::cout << "━";
-            std::cout.flush();
-
-        }
-
-        std::cout << std::endl;
-    }
 };
-

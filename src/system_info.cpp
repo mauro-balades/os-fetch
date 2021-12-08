@@ -16,13 +16,14 @@
 
 #define SYSTEM_RELEASE_PATH "/etc/os-release"
 #define SYSTEM_RELEASE_DECL "PRETTY_NAME" // PRETTY_NAME="..."
+#define TIME_DELIMITER      "."
 
 namespace system_info
 {
     void system_info_path_check() {
 
         if (!std::filesystem::exists(SYSTEM_RELEASE_PATH)) {
-            std::cerr << "/etc/os-release does not release, did you install your linux distro correctly?" << std::endl;
+            std::cerr << "/etc/os-release does not exists, did you install your linux distro correctly?" << std::endl;
         }
     }
 
@@ -100,35 +101,34 @@ namespace system_info
 
     std::string system_uptime()
     {
-        // Code from https://github.com/ameliaprogs/ponyfetch/blob/main/ponyfetch.cpp#L64
 
         int time;
         int hours;
-        int hremainder;
 
         int minutes;
         int seconds;
-        std::stringstream buffer;
 
+        int hremainder;
+
+        std::stringstream buffer;
         std::ifstream uptimefile;
-        std::string delimiter = ".";
-        std::string output;
 
         std::string result;
+        std::stringstream outstr;
 
         uptimefile.open("/proc/uptime", std::ios::in);
         if(!uptimefile)
         {
-            std::cerr << "/proc/uptime not found. Are you living in a time machine?" << std::endl;
+            std::cerr << "/proc/uptime not found. Do you leave in another reality?" << std::endl;
         }
 
         buffer << uptimefile.rdbuf();
 
         std::string filestring = buffer.str();
-        output = filestring.substr(0, filestring.find(delimiter));
+        std::string out = filestring.substr(0, filestring.find(TIME_DELIMITER));
 
         uptimefile.close();
-        time = stoi(output);
+        time = stoi(out);
 
         hours = (int)time / 3600;
         hremainder = time % 3600;
@@ -136,11 +136,8 @@ namespace system_info
         minutes = (int)hremainder / 60;
         seconds = hremainder % 60;
 
-        std::stringstream outputstr;
-        outputstr << hours << " hours " << minutes << " minutes " << seconds << " seconds ";
-        result = outputstr.str();
-
-        return result;
+        outstr << hours << " hours " << minutes << " minutes " << seconds << " seconds ";
+        return outstr.str();
     }
 
     std::string system_terminal() {
