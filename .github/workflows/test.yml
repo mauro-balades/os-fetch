@@ -1,0 +1,21 @@
+name: Os-fetch testing
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cleaning project (just in case)
+      run: make clean
+    - name: Compiling project
+      run: make
+    - name: Adding object to bin (with sudo)
+      run: sudo make install
