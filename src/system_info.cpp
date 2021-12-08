@@ -147,10 +147,15 @@ namespace system_info
         std::string var = getenv("TERM");
         safereturn << var;
 
-        if (var.empty())
-          res = "Not found...";
-        else
+        if (var.empty()) {
+          printf("EMPTY\n");
+            res = "Not found...";
+        }
+        else {
+          printf("NOT EMPTY\n");
           res = safereturn.str();
+
+        }
 
         return res;
     }
