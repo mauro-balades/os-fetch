@@ -11,6 +11,10 @@
 
 Fetch information from your Linux distribution and computer.
 
+## Why would you use it?
+
+Os-fetch is diferent from other linux distribution fetchers. Keep in mind this is a personal projects and it is not revolucionary.
+
 ## Install
 
 First, you will need to clone the repository: `$ git clone https://github.com/mauro-balades/os-fetch && cd os-fetch`. After cloning, you will need to type the following type to build the compiled object.
